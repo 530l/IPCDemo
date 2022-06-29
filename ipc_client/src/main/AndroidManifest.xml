@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ipc_client">
+
+    <permission
+        android:name="com.starot.lib_intent.CUSTOME_PERMISSION_cc"
+        android:description="@string/cc"
+        android:protectionLevel="signature" />
+    <application>
+        <service
+            android:name="com.ipc.client.CCService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.starot.lib_intent.CUSTOME_PERMISSION_cc"
+            android:process=":CCService" />
+
+    </application>
+
+
+</manifest>

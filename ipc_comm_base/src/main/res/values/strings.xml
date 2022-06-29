@@ -1,0 +1,5 @@
+<resources>
+    <string name="cc">com.starot.lib_intent.CUSTOME_PERMISSION_cc</string>
+    <string name="ss">com.starot.lib_intent.CUSTOME_PERMISSION_ss</string>
+
+</resources>

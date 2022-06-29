@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ipc_service">
+
+    <permission
+        android:name="com.starot.lib_intent.CUSTOME_PERMISSION_ss"
+        android:description="@string/ss"
+        android:protectionLevel="signature" />
+
+
+    <application>
+        <service
+            android:name="com.ipc.service.SService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.starot.lib_intent.CUSTOME_PERMISSION_ss"
+            android:process=":SService" />
+    </application>
+</manifest>
