@@ -3,8 +3,7 @@ package com.ipc.client
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
-import android.os.Bundle
-import android.os.IBinder
+import android.os.*
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.ipc.ServiceIPC
 import com.ipc.model.UserInfo
 import com.ipc_client.R
+import java.util.concurrent.CountDownLatch
 
 class ClientFragment : Fragment() {
 
@@ -59,6 +59,43 @@ class ClientFragment : Fragment() {
                 Log.i("53053050", u.toString())
             }
         }
+
+        view.findViewById<TextView>(R.id.client_tv).setOnClickListener {
+            Thread {
+                val i = testLoad()
+                val msg = Message.obtain()
+                msg.arg1 = i
+                msg.what = 1
+                handle.sendMessage(msg)
+            }.start()
+        }
+    }
+
+    private val handle = object : Handler(Looper.getMainLooper()) {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            view?.findViewById<TextView>(R.id.client_tv)?.text = msg.arg1.toString()
+
+        }
+    }
+
+    //todo 是会阻塞主线程，超过一定时间就会无响应。短时间还可以
+    private fun testLoad(): Int {
+        val countDownLatch = CountDownLatch(2)
+        var age = 0
+        var age2 = 0
+        Thread {
+            Thread.sleep(500)
+            age2 = 1
+            countDownLatch.countDown()
+        }.start()
+        Thread {
+            Thread.sleep(300)
+            age = 2
+            countDownLatch.countDown()
+        }.start()
+        countDownLatch.await()
+        return age + age2
     }
 
 }
