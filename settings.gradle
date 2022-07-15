@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "IPCDemo"
@@ -17,4 +18,3 @@ include ':app'
 include ':ipc_client'
 include ':ipc_service'
 include ':ipc_comm_base'
-include ':ble'

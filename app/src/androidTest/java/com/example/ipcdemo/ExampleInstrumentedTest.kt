@@ -1,5 +1,6 @@
 package com.example.ipcdemo
 
+import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -17,8 +18,10 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.ipcdemo", appContext.packageName)
+        val deviceNameLowercase = "gamesir-g4pro_g09"
+        val deviceFullnameLowercase1 = "gamesir-g4pro"
+        val deviceFullnameLowercase2 = "gamesir-g4"
+        Log.i("tttt",deviceNameLowercase.contains(deviceFullnameLowercase1).toString())
+        Log.i("tttt",deviceNameLowercase.contains(deviceFullnameLowercase2).toString())
     }
 }

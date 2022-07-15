@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <fragment
+   <!-- <fragment
         android:id="@+id/ClientFragment"
         android:name="com.ipc.client.ClientFragment"
         android:layout_width="0dp"
@@ -19,5 +19,5 @@
         android:name="com.ipc.service.ServiceFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1" />-->
 </LinearLayout>

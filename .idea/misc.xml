@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/andoridstudio/work/IPCDemo/app/src/main/res/layout/activity_ipc.xml" value="0.10052083333333334" />
+        <entry key="..\:/andoridstudio/work/IPCDemo/ble/src/main/res/layout/activity_main.xml" value="0.291213768115942" />
         <entry key="app/src/main/res/layout/activity_ipc.xml" value="0.15833333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15833333333333333" />
         <entry key="ipc_client/src/main/res/layout/client_fragment.xml" value="0.1" />
