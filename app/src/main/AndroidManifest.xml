@@ -3,7 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ipcdemo">
 
+
+    <!-- 蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<!--    为适配安卓6.0以及以上版本需要添加一个模糊定位的权限-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<!--    手机权限管理中允许此权限，否则会出现无法搜索到设备的情况；-->
+
+<!--    BLE权限增加了BEL支持检查-->
+<!--    (1).在manifest中添加权限-->
+    <!-- true 表示手机必须支持BLE，否则无法安装！
+        这里设为false, 运行后在Activity中检查-->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+
+
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +33,7 @@
         android:theme="@style/Theme.IPCDemo"
         tools:targetApi="31">
         <activity
-            android:name=".IPCActivity"
+            android:name=".Ble2Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
