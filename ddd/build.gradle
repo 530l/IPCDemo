@@ -1,0 +1,75 @@
+apply plugin: 'maven-publish'
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+///gradle  publishToMavenLocal 执行。
+/// gradle publish 不低仓库发布
+publishing {
+    repositories {
+
+        repositories {
+            //本地仓库
+            maven {
+                url = "../repo"
+            }
+
+
+            //TODO 为啥2者不能同时一起写，暂时不懂。
+            // 远程仓库
+//            maven {
+//                allowInsecureProtocol(true)//允许不安全的协议
+//                url = "url"//私有maven库地址
+//                credentials {
+//                    "username"// 账号
+//                    "password"// 密码
+//                }
+//            }
+        }
+
+        def type = 1
+        publications {
+            if (type == 1) {
+                debugType(MavenPublication) {
+                    groupId "com.test.gamepermissionplugin"
+                    artifactId "gamepermissionplugin"
+                    version "1.0.0"
+                    from components.java
+                }
+
+                releaseType(MavenPublication) {
+                    groupId "com.test.gamepermissionplugin"
+                    artifactId "gamepermissionplugin"
+                    version "1.0.0"
+                    from components.java
+                }
+            } else {
+                debugType(MavenPublication) {
+                    groupId "com.chenyihong.doubleclick"
+                    artifactId "intercept"
+                    version "1.0.0"
+                    from components.java
+                }
+
+                releaseType(MavenPublication) {
+                    groupId "com.chenyihong.doubleclick"
+                    artifactId "intercept"
+                    version "1.0.0"
+                    from components.java
+                }
+            }
+
+        }
+    }
+
+}
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:4.2.2'
+
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}

@@ -1,16 +1,17 @@
 pluginManagement {
     repositories {
+        maven { url('./repo') }
         gradlePluginPortal()
         google()
         mavenCentral()
+
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        mavenCentral()
         maven { url 'https://jitpack.io' }
+        mavenCentral()
     }
 }
 rootProject.name = "IPCDemo"
@@ -18,3 +19,4 @@ include ':app'
 include ':ipc_client'
 include ':ipc_service'
 include ':ipc_comm_base'
+include ':ddd'

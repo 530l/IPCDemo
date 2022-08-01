@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 import org.junit.Assert.*
 
 /**
- * Instrumented test, which will execute on an Android device.
+ * Instrumented com.test, which will execute on an Android device.
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
@@ -17,8 +17,8 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
-        // Context of the app under test.
+        // Context of the app under com.test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ipc_service.test", appContext.packageName)
+        assertEquals("com.ipc_service.com.test", appContext.packageName)
     }
 }
