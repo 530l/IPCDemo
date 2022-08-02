@@ -4,22 +4,17 @@ plugins {
     id 'com.chenyihong.doubleclick'
     id 'com.test.gamepermissionplugin'
 }
-//要检测的权限
-//CheckPermissionExtension {
-//    checkPermissions = ["android.permission.ACCESS_NETWORK_STATE",
-//                        "android.permission.ACCESS_WIFI_STATE",
-//                        "com.google.android.gms.permission.AD_ID"]
-//}
+
 
 apply plugin: 'kotlin-parcelize'
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.ipcdemo"
         minSdk 21
-        targetSdk 30
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -43,6 +38,12 @@ android {
 
 }
 
+//要检测的权限
+CheckSelfPermission {
+    checkPermissions = ["android.permission.ACCESS_NETWORK_STATE",
+                        "android.permission.BLUETOOTH",
+                        "com.google.android.gms.permission.AD_ID"]
+}
 
 dependencies {
 

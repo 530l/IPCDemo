@@ -1,5 +1,6 @@
 package com.test
 
+import com.android.build.gradle.AppExtension
 import com.android.build.gradle.tasks.ProcessApplicationManifest
 import com.android.ddmlib.Log
 import groovy.xml.Namespace
@@ -107,7 +108,8 @@ class GamePermissionPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         def permissionExtension = project.extensions.create("CheckSelfPermission", PermissionExtension)
-        def appExtension = project.extensions.findByType(AppExtension.class)
+//        def appExtension = project.extensions.findByType(AppExtension.class)
+        def appExtension = (AppExtension) project.getProperties().get("android");
         project.afterEvaluate {
             appExtension.getApplicationVariants().findAll {
                 if (!variantNames.contains(it.name)) {
@@ -115,6 +117,7 @@ class GamePermissionPlugin implements Plugin<Project> {
                 }
             }
 
+            // gradle MiniGameCheckDebugPermissionTask
             variantNames.each {
                 //创建Task,并设置分组
                 CheckPermissionTask checkPermissionTask = project.getTasks().create(String.format("MiniGameCheck%sPermissionTask", it.capitalize()), CheckPermissionTask)
@@ -124,7 +127,9 @@ class GamePermissionPlugin implements Plugin<Project> {
         }
     }
 
-    private static void setCheckPermissionTaskData(Project project, CheckPermissionTask checkPermissionTask, String name, ArrayList<String> checkPermissions) {
+    private static void setCheckPermissionTaskData(Project project,
+                                                   CheckPermissionTask checkPermissionTask,
+                                                   String name, ArrayList<String> checkPermissions) {
         try {
             //找到处理Manifest的Task
             ProcessApplicationManifest processManifestTask = project.getTasks().getByName(String.format("process%sMainManifest", name))
