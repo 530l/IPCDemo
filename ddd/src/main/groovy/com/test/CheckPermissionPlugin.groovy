@@ -12,6 +12,10 @@ import org.xml.sax.SAXException
 
 import javax.xml.parsers.ParserConfigurationException
 
+//Extension类
+class PermissionExtension {
+    ArrayList<String> checkPermissions
+}
 
 class CheckPermissionEntity {
 
@@ -102,10 +106,8 @@ class GamePermissionPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        //  CheckSelfPermission  PermissionExtension
         def permissionExtension = project.extensions.create("CheckSelfPermission", PermissionExtension)
         def appExtension = project.extensions.findByType(AppExtension.class)
-
         project.afterEvaluate {
             appExtension.getApplicationVariants().findAll {
                 if (!variantNames.contains(it.name)) {
@@ -133,3 +135,5 @@ class GamePermissionPlugin implements Plugin<Project> {
         }
     }
 }
+
+
